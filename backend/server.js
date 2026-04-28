@@ -11,11 +11,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Data file path
+// Data storage
+const IS_VERCEL = process.env.VERCEL === '1';
 const DATA_FILE = path.join(__dirname, 'data', 'projects.json');
+let inMemoryData = { projects: [] };
 
-// Ensure data directory and file exist
+// Ensure data directory and file exist (only for local development)
 async function initializeData() {
+  if (IS_VERCEL) {
+    return; // Skip file initialization on Vercel
+  }
+
   const dataDir = path.join(__dirname, 'data');
   try {
     await fs.access(dataDir);
@@ -30,14 +36,21 @@ async function initializeData() {
   }
 }
 
-// Read projects from file
+// Read projects from file or memory
 async function readProjects() {
+  if (IS_VERCEL) {
+    return inMemoryData;
+  }
   const data = await fs.readFile(DATA_FILE, 'utf-8');
   return JSON.parse(data);
 }
 
-// Write projects to file
+// Write projects to file or memory
 async function writeProjects(data) {
+  if (IS_VERCEL) {
+    inMemoryData = data;
+    return;
+  }
   await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
@@ -192,9 +205,14 @@ app.delete('/api/projects/:projectId/resources/:resourceId', async (req, res) =>
   }
 });
 
-// Start server
-initializeData().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+// Start server (for local development)
+if (require.main === module) {
+  initializeData().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
   });
-});
+}
+
+// Export for Vercel
+module.exports = app;

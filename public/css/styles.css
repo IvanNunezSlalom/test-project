@@ -1,0 +1,389 @@
+/* Slalom Brand Standards - February 2025 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #0C62FB;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #0C62FB;
+  font-weight: 600;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #0C62FB;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: #0A4FCC;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(12, 98, 251, 0.3);
+}
+
+.btn-secondary {
+  background-color: #E6E6E6;
+  color: #1A1A1A;
+}
+
+.btn-secondary:hover {
+  background-color: #B3B3B3;
+}
+
+.btn-danger {
+  background-color: #FF6B6B;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.btn-danger:hover {
+  background-color: #E85555;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E6E6E6;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 24px rgba(12, 98, 251, 0.15);
+  border-color: #0C62FB;
+  transform: translateY(-2px);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 15px;
+}
+
+.project-title {
+  font-size: 1.3rem;
+  color: #0C62FB;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.project-actions {
+  position: relative;
+}
+
+.project-description {
+  color: #4D4D4D;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.project-meta {
+  font-size: 0.8rem;
+  color: #808080;
+  margin-bottom: 15px;
+}
+
+.resources {
+  border-top: 1px solid #E6E6E6;
+  padding-top: 15px;
+}
+
+.resources-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.resources-header h3 {
+  font-size: 1rem;
+  color: #1A1A1A;
+  font-weight: 600;
+}
+
+.resource-list {
+  list-style: none;
+}
+
+.resource-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  background: #F5F5F5;
+  border-radius: 4px;
+  border: 1px solid #E6E6E6;
+  transition: all 0.2s ease;
+}
+
+.resource-item:hover {
+  background: #E6F4FF;
+  border-color: #0C62FB;
+}
+
+.resource-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.resource-type {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: #0C62FB;
+  color: #FFFFFF;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.resource-type.local-file {
+  background: #00FF7F;
+  color: #1A1A1A;
+}
+
+.resource-type.shared-file {
+  background: #FFD600;
+  color: #1A1A1A;
+}
+
+.resource-name {
+  color: #0C62FB;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.resource-name:hover {
+  text-decoration: underline;
+  color: #0A4FCC;
+}
+
+.resource-actions {
+  position: relative;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #FFFFFF;
+  padding: 32px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #1A1A1A;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #B3B3B3;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0C62FB;
+  box-shadow: 0 0 0 3px rgba(12, 98, 251, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #808080;
+}
+
+.empty-state h2 {
+  margin-bottom: 10px;
+  color: #0C62FB;
+  font-weight: 600;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4D4D4D;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background-color: #E6F4FF;
+  color: #0C62FB;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  min-width: 120px;
+  z-index: 100;
+  margin-top: 4px;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: #1A1A1A;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #E6F4FF;
+  color: #0C62FB;
+}
+
+.dropdown-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.dropdown-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.dropdown-item-danger {
+  color: #FF6B6B;
+}
+
+.dropdown-item-danger:hover {
+  background-color: #FFE6E6;
+  color: #E85555;
+}
